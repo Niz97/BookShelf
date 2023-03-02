@@ -22,6 +22,7 @@ mongoose.connect(
     console.log(`Listening on port ${PORT}`);
 });
 
+// TODO:: Move, this just confirms we can write documents to our db
 async function createReview() {
     
   const review = new Review({
@@ -34,7 +35,6 @@ async function createReview() {
 
 }
 
-createReview();
 
 
 
