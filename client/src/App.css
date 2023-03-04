@@ -12,7 +12,11 @@
   align-items: center;
 }
 
-
+.shelf-container  {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .book {
   color: white;
   padding: 0.5rem;
@@ -20,4 +24,14 @@
   font-family: 'Roboto', sans-serif;
   background: linear-gradient(45deg,#4099ff,#73b4ff);
 
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  text-align: left;
+  display: block;
 }
