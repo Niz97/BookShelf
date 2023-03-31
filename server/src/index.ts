@@ -3,6 +3,7 @@ import express from "express";
 import mongoose from "mongoose";
 import cors from "cors";
 import Review from "./models/Review";
+import reviews from './routes/reviewRoutes'
 
 config()
 
@@ -21,6 +22,9 @@ mongoose.connect(
   ).then(() => {
     console.log(`Listening on port ${PORT}`);
 });
+
+app.use('/reviews', reviews);
+
 
 // TODO:: Move, this just confirms we can write documents to our db
 async function createReview() {

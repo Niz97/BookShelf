@@ -17,14 +17,6 @@
   justify-content: center;
   align-items: center;
 }
-.book {
-  color: white;
-  padding: 0.5rem;
-  border-radius: 18px;
-  font-family: 'Roboto', sans-serif;
-  background: linear-gradient(45deg,#4099ff,#73b4ff);
-
-}
 
 .form-group {
   display: flex;
@@ -35,3 +27,4 @@
   text-align: left;
   display: block;
 }
+

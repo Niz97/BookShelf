@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './App.css'
 import Book from './components/Book'
-
+import { createReview } from './api/createReview';
 
 function App() {
   const [book, setBook] = useState({
@@ -13,6 +13,7 @@ function App() {
   const handleSubmit = (e:React.FormEvent) => {
     e.preventDefault();
     console.log('submitting...');
+    createReview('test post request');
   }
 
   const handleChange = (e:React.FormEvent) => {
@@ -24,9 +25,21 @@ function App() {
   return (
     <div className="App">
       <div className="shelf-container">
-        <Book />
-        <Book />
-        <Book />
+        <Book 
+          author="Some author"
+          genre="Sci-fi"
+          name="Stormbreaker"
+        />
+        <Book 
+          author="Some author"
+          genre="Sci-fi"
+          name="Stormbreaker"
+        />
+        <Book 
+          author="Some author"
+          genre="Sci-fi"
+          name="Stormbreaker"
+        />
       </div>
       <div className="review-form">
         <form onSubmit={handleSubmit}>
