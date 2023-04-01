@@ -2,9 +2,10 @@ const express = require('express')
 const reviews = express.Router()
 import {
   createdReview,
+  getReviews,
 } from "../controllers/reviewController";
 
 
-reviews.route('/').post(createdReview)
+reviews.route('/').get(getReviews).post(createdReview);
 
 export default reviews;
