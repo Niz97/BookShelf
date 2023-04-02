@@ -3,6 +3,13 @@ import './App.css'
 import Book from './components/Book'
 import { createReview } from './api/createReview';
 import { getReviews } from './api/getReviews';
+import styled from 'styled-components';
+
+const StyledShelf = styled.div`
+  display: flex;
+  border: solid 1px blue;
+  padding: 1rem;
+`
 
 function App() {
   const [newReview, setNewReview] = useState({
@@ -34,7 +41,7 @@ function App() {
   }, [])
   return (
     <div className="App">
-      <div className="shelf-container">
+      <StyledShelf className="shelf-container">
         {reviews.map((review) => (
           <Book 
            // TODO::Use redux-toolkit to gen unique keys
@@ -44,7 +51,7 @@ function App() {
             name={review.name}
           />
         ))}
-      </div>
+      </StyledShelf>
       <div className="review-form">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
