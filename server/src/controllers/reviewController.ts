@@ -7,7 +7,9 @@ export async function createdReview(req: Request, res: Response) {
   // TODO::Validation
   // TODO::Make this more DRY lol
   if (!req.body.name || !req.body.author || !req.body.genre) {
-    res.status(400).json('Please fill out all fields') // TODO::Whats the correct status code to use when returning validation errors?
+    return res.status(400).json({ 
+      message: 'Please fill out all fields'
+    }) // TODO::Whats the correct status code to use when returning validation errors?
   }
   const review = new Review({
     name: req.body.name,
@@ -17,7 +19,10 @@ export async function createdReview(req: Request, res: Response) {
 
   const createdReview = await review.save();
 
-  res.status(201).json(createdReview);
+  res.status(201).json({
+    ...createdReview,
+    message:`Saved your review: ${req.body.name}`
+  })
 }
 
 // Get all reviews

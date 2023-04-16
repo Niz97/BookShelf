@@ -24,9 +24,9 @@ function App() {
   async function handleSubmit (e:React.FormEvent) {
     e.preventDefault();
     console.log('submitting...');
-    const [success, message] = await createReview(newReview.name, newReview.genre, newReview.author);
-    console.log(success, message)
-    success ? toast.success(message) : toast.error(message)
+    const [success, response] = await createReview(newReview.name, newReview.genre, newReview.author);
+    console.log(success, response)
+    success ? toast.success(response.message) : toast.error(response.message)
   }
 
   const handleChange = (e:React.FormEvent) => {
