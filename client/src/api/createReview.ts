@@ -11,5 +11,5 @@ export async function createReview(name:string, genre:string, author:string) {
       "Content-Type": "application/json",
     },
   });
-  return response.json();
+  return [response.ok, await response.json()]
 }

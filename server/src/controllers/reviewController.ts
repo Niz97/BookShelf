@@ -5,7 +5,10 @@ import Review from "../models/Review";
 export async function createdReview(req: Request, res: Response) {
     
   // TODO::Validation
-  console.log(req.body.name, req.body.genre, req.body.author);
+  // TODO::Make this more DRY lol
+  if (!req.body.name || !req.body.author || !req.body.genre) {
+    res.status(400).json('Please fill out all fields') // TODO::Whats the correct status code to use when returning validation errors?
+  }
   const review = new Review({
     name: req.body.name,
     author: req.body.author,
@@ -14,7 +17,7 @@ export async function createdReview(req: Request, res: Response) {
 
   const createdReview = await review.save();
 
-  res.json(createdReview);
+  res.status(201).json(createdReview);
 }
 
 // Get all reviews

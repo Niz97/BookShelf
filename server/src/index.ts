@@ -26,20 +26,4 @@ mongoose.connect(
 app.use('/reviews', reviews);
 
 
-// TODO:: Move, this just confirms we can write documents to our db
-async function createReview() {
-    
-  const review = new Review({
-    name: 'test',
-    author: 'test',
-    genre: 'test',
-  });
-  
-  const createdReview = await review.save();
-
-}
-
-
-
-
 app.listen(5000);

@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import './App.css'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import Book from './components/Book'
 import { createReview } from './api/createReview';
 import { getReviews } from './api/getReviews';
@@ -18,11 +20,13 @@ function App() {
     author: ''
   });
   const [reviews, setReviews] = useState<any[]>([]);
-  
-  const handleSubmit = (e:React.FormEvent) => {
+    
+  async function handleSubmit (e:React.FormEvent) {
     e.preventDefault();
     console.log('submitting...');
-    createReview(newReview.name, newReview.genre, newReview.author);
+    const [success, message] = await createReview(newReview.name, newReview.genre, newReview.author);
+    console.log(success, message)
+    success ? toast.success(message) : toast.error(message)
   }
 
   const handleChange = (e:React.FormEvent) => {
@@ -41,6 +45,7 @@ function App() {
   }, [])
   return (
     <div className="App">
+      <ToastContainer />
       <StyledShelf className="shelf-container">
         {reviews.map((review) => (
           <Book 
