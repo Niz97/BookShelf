@@ -24,8 +24,8 @@ function App() {
   async function handleSubmit (e:React.FormEvent) {
     e.preventDefault();
     console.log('submitting...');
+    // TODO:: Would be much nicer if the logic below lived in a hook
     const [success, response] = await createReview(newReview.name, newReview.genre, newReview.author);
-    console.log(success, response)
     success ? toast.success(response.message) : toast.error(response.message)
   }
 
