@@ -2,16 +2,10 @@ import React, { useEffect, useState } from 'react'
 import './App.css'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Book from './components/Book'
 import { createReview } from './api/createReview';
 import { getReviews } from './api/getReviews';
-import styled from 'styled-components';
+import BookShelf from './components/BookShelf';
 
-const StyledShelf = styled.div`
-  display: flex;
-  border: solid 1px blue;
-  padding: 1rem;
-`
 
 function App() {
   const [newReview, setNewReview] = useState({
@@ -46,22 +40,12 @@ function App() {
   return (
     <div className="App">
       <ToastContainer />
-      <StyledShelf className="shelf-container">
-        {reviews.map((review) => (
-          <Book 
-           // TODO::Use redux-toolkit to gen unique keys
-            key={`${review.name}-key-${(new Date().valueOf() - Math.random()*(1e+12))}`}
-            author={review.author}
-            genre={review.genre}
-            name={review.name}
-          />
-        ))}
-      </StyledShelf>
+      <BookShelf reviews={reviews}/>
       <div className="review-form">
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
-            <input 
+            <input
               id="new-Review-name" 
               name="name"
               type="text"
@@ -69,7 +53,7 @@ function App() {
               onChange={handleChange}
             />
             <label htmlFor="genre">Genre</label>
-            <input 
+            <input
               id="new-Review-genre" 
               name="genre"
               type="text"
@@ -77,7 +61,7 @@ function App() {
               onChange={handleChange}
             />
             <label htmlFor="name">Author</label>
-            <input 
+            <input
               id="new-Review-author" 
               name="author"
               type="text"
